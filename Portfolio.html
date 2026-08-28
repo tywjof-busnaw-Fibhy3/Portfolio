@@ -9,21 +9,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0e0a1f;
-    --violet:#1b1330;
-    --violet-2:#241a45;
-    --paper:#f4f2fb;
-    --coral:#ff6b57;
-    --cyan:#3fd9d0;
-    --violet-line: rgba(244,242,251,0.14);
-    --muted: rgba(244,242,251,0.62);
+    --ink:#3a3550;
+    --violet:#ffffff;
+    --violet-2:#fbfbff;
+    --paper:#f8fafc;
+    --coral:#FFB6C1;
+    --cyan:#748DA6;
+    --pink:#FDCEDF;
+    --pink-pale:#F8E8EE;
+    --blue-light:#BBE1FA;
+    --blue-mid:#9BCDD2;
+    --lavender:#D0BFFF;
+    --lavender-light:#E5D4FF;
+    --mint:#A0E7E5;
+    --mint-light:#C1ECE4;
+    --butter:#FFE5AD;
+    --butter-light:#FFF5E4;
+    --violet-line: rgba(116,141,166,0.22);
+    --muted: rgba(58,53,80,0.6);
     --radius: 14px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--ink);
-    color:var(--paper);
+    background:var(--paper);
+    color:var(--ink);
     font-family:'Inter', sans-serif;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
@@ -48,16 +58,17 @@
   .bg-noise{
     position:fixed; inset:0; z-index:0; pointer-events:none;
     background:
-      radial-gradient(circle at 15% 20%, rgba(255,107,87,0.10), transparent 40%),
-      radial-gradient(circle at 85% 75%, rgba(63,217,208,0.10), transparent 45%),
-      var(--ink);
+      radial-gradient(circle at 15% 20%, rgba(253,206,223,0.35), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(187,225,250,0.40), transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(197,236,228,0.30), transparent 50%),
+      var(--paper);
   }
 
   /* ---------- nav ---------- */
   header{
     position:sticky; top:0; z-index:50;
     backdrop-filter: blur(14px);
-    background: rgba(14,10,31,0.7);
+    background: rgba(248,250,252,0.75);
     border-bottom:1px solid var(--violet-line);
   }
   nav{
@@ -73,7 +84,7 @@
   .logo .dot{ width:8px; height:8px; border-radius:50%; background:var(--coral); box-shadow:0 0 12px var(--coral); }
   .navlinks{ display:flex; gap:32px; font-size:14px; color:var(--muted); }
   .navlinks a{ transition:color .2s ease; }
-  .navlinks a:hover{ color:var(--paper); }
+  .navlinks a:hover{ color:var(--ink); }
   .navlinks a:focus-visible, a:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; border-radius:4px; }
 
   /* ---------- hero ---------- */
@@ -110,13 +121,14 @@
     transition:transform .18s ease, box-shadow .18s ease;
   }
   .btn-primary{
-    background:linear-gradient(100deg, var(--coral), #ff8f6b);
+    background:linear-gradient(100deg, var(--coral), var(--blue-light));
     color:var(--ink);
   }
-  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -10px rgba(255,107,87,0.6); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -10px rgba(155,205,210,0.6); }
   .btn-ghost{
     border:1px solid var(--violet-line);
-    color:var(--paper);
+    color:var(--ink);
+    background:#ffffff;
   }
   .btn-ghost:hover{ border-color:var(--cyan); color:var(--cyan); }
 
@@ -153,7 +165,7 @@
     padding:36px 0; border-top:1px solid var(--violet-line);
     transition:background .2s ease;
   }
-  .project:hover{ background:rgba(255,255,255,0.02); }
+  .project:hover{ background:rgba(155,205,210,0.10); }
   .project:last-child{ border-bottom:none; }
   .project-year{ font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--muted); padding-top:4px; }
   .project-title{ font-size:1.3rem; font-weight:600; margin-bottom:4px; }
@@ -175,6 +187,31 @@
   }
   .project-link:hover{ border-color:var(--cyan); color:var(--cyan); transform:translate(2px,-2px); }
 
+  /* ---------- app screenshot showcase ---------- */
+  .app-shots{
+    margin-top:24px;
+    display:flex; gap:16px;
+    overflow-x:auto; padding:6px 6px 16px;
+    scroll-snap-type:x proximity;
+  }
+  .app-shots::-webkit-scrollbar{ height:6px; }
+  .app-shots::-webkit-scrollbar-thumb{ background:var(--blue-mid); border-radius:99px; }
+  .app-shots figure{
+    flex:0 0 auto; width:150px;
+    scroll-snap-align:start;
+    background:linear-gradient(160deg, var(--blue-light), var(--lavender-light));
+    padding:8px; border-radius:20px;
+    box-shadow:0 10px 24px -14px rgba(116,141,166,0.5);
+  }
+  .app-shots img{
+    display:block; width:100%; border-radius:14px;
+    border:2px solid #ffffff;
+  }
+  .app-shots figcaption{
+    font-size:11px; text-align:center; color:var(--muted);
+    margin-top:8px; font-family:'JetBrains Mono', monospace;
+  }
+
   @media (max-width:720px){
     .project{ grid-template-columns:1fr; gap:10px; }
     .project-link{ justify-self:start; }
@@ -190,8 +227,9 @@
   .skill-list{ display:flex; flex-wrap:wrap; gap:9px; }
   .skill-item{
     font-size:13.5px; padding:7px 13px; border-radius:8px;
-    background:rgba(255,255,255,0.04);
+    background:rgba(187,225,250,0.35);
     border:1px solid var(--violet-line);
+    color:var(--ink);
   }
   @media (max-width:720px){ .skills-grid{ grid-template-columns:1fr; } }
 
@@ -257,6 +295,17 @@
           <p class="project-desc">Co-developing a full-stack mobile/web application featuring a custom dual-layer speech recognition and audio analysis system. Engineered the core audio processing models using MFCC and Dynamic Time Warping (DTW) for the primary analysis layer, and integrated Chroma feature extraction for enhanced phonetic evaluation.</p>
           <div class="project-stack">
             <span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MFCC</span><span class="chip">DTW</span><span class="chip">Chroma Features</span>
+          </div>
+          <div class="app-shots">
+            <figure><img src="assets/app-01-login.jpg" alt="Log in screen" loading="lazy"><figcaption>Log in</figcaption></figure>
+            <figure><img src="assets/app-02-signup.jpg" alt="Sign up screen" loading="lazy"><figcaption>Sign up</figcaption></figure>
+            <figure><img src="assets/app-03-otp.jpg" alt="OTP verification screen" loading="lazy"><figcaption>Confirm OTP</figcaption></figure>
+            <figure><img src="assets/app-04-home.jpg" alt="Home screen" loading="lazy"><figcaption>Home</figcaption></figure>
+            <figure><img src="assets/app-05-level-select.jpg" alt="Level selection screen" loading="lazy"><figcaption>Select level</figcaption></figure>
+            <figure><img src="assets/app-06-confirm.jpg" alt="Confirm level screen" loading="lazy"><figcaption>Confirm level</figcaption></figure>
+            <figure><img src="assets/app-07-daily-sentence.jpg" alt="Daily sentence and progress screen" loading="lazy"><figcaption>Daily sentence</figcaption></figure>
+            <figure><img src="assets/app-08-lesson-list.jpg" alt="Lesson list screen" loading="lazy"><figcaption>Lesson list</figcaption></figure>
+            <figure><img src="assets/app-09-speak-phrase.jpg" alt="Speak the phrase screen" loading="lazy"><figcaption>Pronunciation check</figcaption></figure>
           </div>
         </div>
         <a class="project-link" href="#" aria-label="View repository">↗</a>
